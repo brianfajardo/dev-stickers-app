@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 class Navbar extends Component {
   render() {
     return (
-      <Menu inverted>
+      <Menu inverted id="navbar">
         <Link to="/">
           <Menu.Item>
             <Icon name="lightning" size="big" />
