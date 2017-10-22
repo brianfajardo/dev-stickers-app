@@ -13,7 +13,7 @@ const Landing = () => (
     <p>
       Welcome to the site where you can browse among our collection of your favourite Web dev
       stickers. Whether {"you're"} a Java purist or follow the church of Node.JS master race, we got
-      your back - express yourself!
+      your back! Stick {"'em"} on your laptop and be proud and loud!
     </p>
     <Link to="/collection">
       <Button animated color="green">
