@@ -2,21 +2,13 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Table, Icon } from 'semantic-ui-react'
 
+import Header from '../components/Header'
+
 class Cart extends Component {
   render() {
     return (
       <div>
-        <h1>
-          <span role="img" aria-label="cart">
-            🛒
-          </span>{' '}
-          Cart
-          <Link to="/collection">
-            <Button color="red" floated="right">
-              Back
-            </Button>
-          </Link>
-        </h1>
+        <Header emoji="🛒" emojiLabel="cart" text="Cart" />
         <div>
           <Table color="green" striped columns="4" textAlign="center">
             {/* Table header */}
@@ -58,6 +50,9 @@ class Cart extends Component {
           <p>
             <b>Grand Total:</b> $X.XX
           </p>
+          <Link to="/collection">
+            <Button color="red">Back</Button>
+          </Link>
           <Button color="green">Checkout</Button>
         </div>
       </div>

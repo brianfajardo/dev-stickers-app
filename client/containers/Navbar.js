@@ -9,7 +9,7 @@ class Navbar extends Component {
         <Link to="/">
           <Menu.Item>
             <Icon name="lightning" size="big" />
-            Web Dev Stickers
+            Webdev Stckrs.
           </Menu.Item>
         </Link>
         <Menu.Menu position="right">

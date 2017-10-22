@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 
+import Header from '../components/Header'
+
 class Collection extends Component {
   render() {
     return (
       <div>
-        <h1>
-          <span role="img" aria-label="confetti">
-            🎉
-          </span>{' '}
-          The Collection
-        </h1>
+        <Header emoji="🎉" emojiAriaLabel="confetti" text="The Collection" />
       </div>
     )
   }

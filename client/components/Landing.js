@@ -2,18 +2,15 @@ import React from 'react'
 import { Button, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
+import Header from '../components/Header'
+
 const Landing = () => (
-  <div>
-    <h1>
-      Hey there!{' '}
-      <span role="img" aria-label="hand wave">
-        👋
-      </span>
-    </h1>
+  <div id="landing">
+    <Header emoji="👋" emojiAriaLabel="hand wave" text="Hey there!" />
     <p>
-      Welcome to the site where you can browse among our collection of your favourite Web dev
-      stickers. Whether {"you're"} a Java purist or follow the church of Node.JS master race, we got
-      your back! Stick {"'em"} on your laptop and be proud and loud!
+      {"It's"} good to have you! We invite you to browse our collection of your favourite Web dev
+      stickers. Whether {"you're"} a member of #NodeMasterRace, a vanilla JavaScript purist, or the
+      type of person to use commas, we got what you need to trick out your laptop!
     </p>
     <Link to="/collection">
       <Button animated color="green">
