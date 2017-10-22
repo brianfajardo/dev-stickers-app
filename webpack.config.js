@@ -17,6 +17,14 @@ module.exports = {
           presets: ['env', 'react'],
         },
       },
+      {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+      },
     ],
   },
   plugins: [
