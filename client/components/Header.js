@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Header = props => (
   <h1>
@@ -9,5 +10,12 @@ const Header = props => (
     {props.children}
   </h1>
 )
+
+Header.propTypes = {
+  emoji: PropTypes.string,
+  emojiAriaLabel: PropTypes.string,
+  text: PropTypes.string,
+  children: PropTypes.element,
+}
 
 export default Header
