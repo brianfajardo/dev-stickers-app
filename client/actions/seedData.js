@@ -1,6 +1,7 @@
 export default [
   {
     product: 'Python',
+    id: 'random-seed-id-1',
     category: 'Language',
     url: 'https://www.python.org/',
     description:
@@ -14,6 +15,7 @@ export default [
   },
   {
     product: 'JavaScript',
+    id: 'random-seed-id-2',
     category: 'Language',
     url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
     description:
@@ -27,6 +29,7 @@ export default [
   },
   {
     product: 'Go',
+    id: 'random-seed-id-3',
     category: 'Language',
     url: 'https://golang.org/',
     description:
@@ -40,6 +43,7 @@ export default [
   },
   {
     product: 'React.js',
+    id: 'random-seed-id-4',
     category: 'JavaScript framework',
     url: 'https://reactjs.org/',
     description:
@@ -53,6 +57,7 @@ export default [
   },
   {
     product: 'Angular',
+    id: 'random-seed-id-5',
     category: 'JavaScript framework',
     url: 'https://angularjs.org/',
     description:
@@ -66,6 +71,7 @@ export default [
   },
   {
     product: 'Vue.js',
+    id: 'random-seed-id-6',
     category: 'JavaScript framework',
     url: 'https://vuejs.org/',
     description:
@@ -79,6 +85,7 @@ export default [
   },
   {
     product: 'Node.js',
+    id: 'random-seed-id-7',
     category: 'Server',
     url: 'https://nodejs.org/en/',
     description:
@@ -92,6 +99,7 @@ export default [
   },
   {
     product: 'Ruby on Rails',
+    id: 'random-seed-id-8',
     category: 'Server',
     url: 'http://rubyonrails.org/',
     description:
@@ -105,6 +113,7 @@ export default [
   },
   {
     product: 'Django',
+    id: 'random-seed-id-9',
     category: 'Server',
     url: 'https://www.djangoproject.com/',
     description:
@@ -119,6 +128,7 @@ export default [
 
   {
     product: 'Atom',
+    id: 'random-seed-id-10',
     category: 'Code editor',
     url: 'https://atom.io/',
     description:
@@ -132,6 +142,7 @@ export default [
   },
   {
     product: 'Visual Studio',
+    id: 'random-seed-id-11',
     category: 'Code editor',
     url: 'https://www.visualstudio.com/',
     description:
@@ -145,6 +156,7 @@ export default [
   },
   {
     product: 'WebStorm',
+    id: 'random-seed-id-12',
     category: 'Code editor',
     url: 'https://www.jetbrains.com/webstorm/',
     description:
@@ -158,6 +170,7 @@ export default [
   },
   {
     product: 'Reddit',
+    id: 'random-seed-id-13',
     category: 'Social News',
     url: 'https://www.reddit.com/',
     description:
@@ -171,6 +184,7 @@ export default [
   },
   {
     product: 'Steam',
+    id: 'random-seed-id-14',
     category: 'Games',
     url: 'http://store.steampowered.com/',
     description:
@@ -184,6 +198,7 @@ export default [
   },
   {
     product: 'Android',
+    id: 'random-seed-id-15',
     category: 'Mobile OS',
     url: 'https://www.android.com/',
     description:
