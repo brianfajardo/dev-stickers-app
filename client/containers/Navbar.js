@@ -19,9 +19,13 @@ class Navbar extends Component {
         </Link>
         <Menu.Menu position="right">
           <Menu.Item>
-            {itemQuantity > 0
-              ? `${itemQuantity} items in cart. Current total: $${subtotal}`
-              : 'Start shopping!'}
+            <Link to="/collection">
+              {itemQuantity > 0
+                ? `${itemQuantity} ${itemQuantity === 1
+                    ? 'item'
+                    : 'items'} in cart 🔆 Subtotal: $${subtotal}`
+                : 'Start shopping! 🔥'}
+            </Link>
           </Menu.Item>
           <Link to="/cart">
             <Menu.Item>
@@ -40,20 +44,21 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  subtotal: PropTypes.number,
+  subtotal: PropTypes.string,
   itemQuantity: PropTypes.number,
 }
 
 const mapStateToProps = (state) => {
   let subtotal = 0
+  let itemQuantity = 0
   const { cart } = state.user
-  const itemQuantity = Object.keys(cart).length
 
-  if (itemQuantity) {
+  if (Object.keys(cart).length > 0) {
     subtotal = helpers.calculateTotal(cart)
+    itemQuantity = helpers.calculateCartQuantity(cart)
   }
 
-  return { itemQuantity, subtotal }
+  return { itemQuantity, subtotal: subtotal.toFixed(2) }
 }
 
 export default connect(mapStateToProps)(Navbar)

@@ -25,8 +25,8 @@ class Collection extends Component {
       <div id="collection">
         <Header emoji="🎉" emojiAriaLabel="confetti" text="The Collection" />
         <div>
-          {this.props.inventory.map((item, index) => (
-            <ProductCard item={item} key={index} onAddToCart={this.onAddToCart} />
+          {this.props.inventory.map(item => (
+            <ProductCard item={item} key={item.id} onAddToCart={this.onAddToCart} />
           ))}
         </div>
         <p>

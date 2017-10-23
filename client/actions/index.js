@@ -1,4 +1,4 @@
-import { GET_INVENTORY, ADD_TO_CART } from './actionTypes'
+import { GET_INVENTORY, ADD_TO_CART, REMOVE_FROM_CART } from './actionTypes'
 
 // Development seed data to flow through reducers and rendered by React
 import seedData from './seedData'
@@ -14,3 +14,5 @@ export const addToCart = (item) => {
   }
   return { type: ADD_TO_CART, payload: addedItem }
 }
+
+export const removeFromCart = item => ({ type: REMOVE_FROM_CART, payload: item })

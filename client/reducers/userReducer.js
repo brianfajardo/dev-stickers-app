@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../actions/actionTypes'
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/actionTypes'
 
 const initialState = {
   cart: {},
@@ -28,7 +28,18 @@ const userReducer = (state = initialState, action) => {
           },
         },
       }
-
+    case REMOVE_FROM_CART:
+      console.log('REMOVE FROM CART REDUCER FIRED.')
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          [action.payload.id]: {
+            ...state.cart[action.payload.id],
+            quantity: state.cart[action.payload.id].quantity - 1,
+          },
+        },
+      }
     default:
       return state
   }

@@ -12,10 +12,10 @@ const Header = props => (
 )
 
 Header.propTypes = {
-  emoji: PropTypes.string,
-  emojiAriaLabel: PropTypes.string,
   text: PropTypes.string,
+  emoji: PropTypes.string,
   children: PropTypes.element,
+  emojiAriaLabel: PropTypes.string,
 }
 
 export default Header
