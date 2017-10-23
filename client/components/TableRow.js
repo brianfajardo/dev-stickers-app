@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Icon } from 'semantic-ui-react'
+import { Table, Icon, Button } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 
 const TableRow = ({
@@ -10,16 +10,16 @@ const TableRow = ({
     <Table.Cell>
       {item.quantity}
       <Icon
-        onClick={() => increaseQuantity(item)}
         name="plus square outline"
         color="green"
         size="large"
+        onClick={() => increaseQuantity(item)}
       />
       <Icon
-        onClick={() => decreaseQuantity(item)}
         name="minus square outline"
         color="red"
         size="large"
+        onClick={() => decreaseQuantity(item)}
       />
     </Table.Cell>
     <Table.Cell>{stickerPrice.toFixed(2)}</Table.Cell>

@@ -29,7 +29,6 @@ const userReducer = (state = initialState, action) => {
         },
       }
     case REMOVE_FROM_CART:
-      console.log('REMOVE FROM CART REDUCER FIRED.')
       return {
         ...state,
         cart: {

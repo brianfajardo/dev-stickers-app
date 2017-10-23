@@ -10,15 +10,12 @@ const inventoryReducer = (state = initialState, action) => {
       return state.map(product =>
         product.id === action.payload.id
           ? { ...product, stock: product.stock - 1 }
-          : product
-      )
+          : product)
     case REMOVE_FROM_CART:
-    console.log('inventory remove from cart reducer fired')
       return state.map(product =>
         product.id === action.payload.id
           ? { ...product, stock: product.stock + 1 }
-          : product
-      )
+          : product)
     default:
       return state
   }

@@ -26,11 +26,16 @@ class Cart extends Component {
   }
 
   decreaseQuantity(item) {
-    if (!this.props.cart[item.id].quantity) {
+    if (!this.props.cart[item.id]) return
+
+    if (this.props.cart[item.id].quantity === 0) {
       // Prevent user from having negative products in cart.
       console.log(`There is 0 quantity of ${item.product} in cart!`)
+      // On zero quantity, remove item from cart
+      delete this.props.cart[item.id]
       return
     }
+
     this.props.removeFromCart(item)
   }
 
@@ -53,33 +58,42 @@ class Cart extends Component {
   }
 
   render() {
-    const { subtotal, taxes, grandTotal } = this.props
+    const {
+      subtotal, taxes, grandTotal, isCartEmpty
+    } = this.props
+
     return (
-      <div>
+      <div id="cart">
         <Header emoji="🛒" emojiLabel="cart" text="Cart" />
-        <div>
-          <Table color="green" striped columns="4" textAlign="center">
-            {/* Table header */}
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Sticker</Table.HeaderCell>
-                <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Price (CDN)</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            {/* Table body */}
-            <Table.Body>{this.renderTableRows()}</Table.Body>
-          </Table>
-        </div>
-        <div style={{ float: 'right', textAlign: 'right' }}>
-          <p>Subtotal: ${subtotal}</p>
-          <p>Taxes (13%): ${taxes}</p>
-          <p>Grand Total: ${grandTotal}</p>
-          <Link to="/collection">
-            <Button color="red">Back</Button>
-          </Link>
-          <Button color="green">Checkout</Button>
-        </div>
+        {isCartEmpty ? (
+          <h3>Oops, looks like {"you're"} cart is empty! 😅</h3>
+        ) : (
+          <div>
+            <div>
+              <Table color="green" striped columns="4" textAlign="center">
+                {/* Table header */}
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Sticker</Table.HeaderCell>
+                    <Table.HeaderCell>Quantity</Table.HeaderCell>
+                    <Table.HeaderCell>Price (CDN)</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                {/* Table body */}
+                <Table.Body>{this.renderTableRows()}</Table.Body>
+              </Table>
+            </div>
+            <div style={{ float: 'right', textAlign: 'right' }}>
+              <p>Subtotal: ${subtotal}</p>
+              <p>Taxes (13%): ${taxes}</p>
+              <p>Grand Total: ${grandTotal}</p>
+              <Link to="/collection">
+                <Button color="red">Back</Button>
+              </Link>
+              <Button color="green">Checkout</Button>
+            </div>
+          </div>
+        )}
       </div>
     )
   }
@@ -91,17 +105,19 @@ Cart.propTypes = {
   addToCart: PropTypes.func,
   subtotal: PropTypes.string,
   inventory: PropTypes.array,
+  isCartEmpty: PropTypes.bool,
   grandTotal: PropTypes.string,
   removeFromCart: PropTypes.func,
 }
 
 const mapStateToProps = ({ inventory, user }) => {
+  const { cart } = user
   let taxes = 0
   let subtotal = 0
   let grandTotal = 0
-  const { cart } = user
+  const isCartEmpty = !Object.keys(cart).length
 
-  if (Object.keys(cart).length) {
+  if (!isCartEmpty) {
     subtotal = helpers.calculateTotal(cart)
   }
 
@@ -110,6 +126,7 @@ const mapStateToProps = ({ inventory, user }) => {
 
   return {
     cart,
+    isCartEmpty,
     inventory,
     subtotal: subtotal.toFixed(2),
     taxes: taxes.toFixed(2),
