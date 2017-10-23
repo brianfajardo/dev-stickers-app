@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Table, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
+import helpers from '../helpers'
 import Header from '../components/Header'
 
 class Cart extends Component {
   render() {
+    const { subtotal, taxes, grandTotal } = this.props
     return (
       <div>
         <Header emoji="🛒" emojiLabel="cart" text="Cart" />
@@ -22,14 +26,6 @@ class Cart extends Component {
             {/* Table body */}
             <Table.Body>
               <Table.Row>
-                <Table.Cell>React.js</Table.Cell>
-                <Table.Cell>
-                  2 <Icon name="plus square outline" color="green" size="large" />
-                  <Icon name="minus square outline" color="red" size="large" />
-                </Table.Cell>
-                <Table.Cell>$5.00</Table.Cell>
-              </Table.Row>
-              <Table.Row>
                 <Table.Cell>Node.js</Table.Cell>
                 <Table.Cell>
                   1 <Icon name="plus square outline" color="green" size="large" />
@@ -41,15 +37,9 @@ class Cart extends Component {
           </Table>
         </div>
         <div style={{ float: 'right', textAlign: 'right' }}>
-          <p>
-            <b>Subtotal</b> $X.XX
-          </p>
-          <p>
-            <b>Taxes (13%):</b> $X.XX
-          </p>
-          <p>
-            <b>Grand Total:</b> $X.XX
-          </p>
+          <p>Subtotal: ${subtotal}</p>
+          <p>Taxes (13%): ${taxes}</p>
+          <p>Grand Total: ${grandTotal}</p>
           <Link to="/collection">
             <Button color="red">Back</Button>
           </Link>
@@ -60,4 +50,30 @@ class Cart extends Component {
   }
 }
 
-export default Cart
+Cart.propTypes = {
+  subtotal: PropTypes.string,
+  taxes: PropTypes.string,
+  grandTotal: PropTypes.string,
+}
+
+const mapStateToProps = (state) => {
+  let subtotal = 0
+  let taxes = 0
+  let grandTotal = 0
+  const { cart } = state.user
+
+  if (Object.keys(cart).length) {
+    subtotal = helpers.calculateTotal(cart)
+  }
+
+  taxes = helpers.calculateTax(subtotal)
+  grandTotal = subtotal + taxes
+
+  return {
+    subtotal: subtotal.toFixed(2),
+    taxes: taxes.toFixed(2),
+    grandTotal: grandTotal.toFixed(2),
+  }
+}
+
+export default connect(mapStateToProps)(Cart)

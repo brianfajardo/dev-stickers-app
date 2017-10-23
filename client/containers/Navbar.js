@@ -8,7 +8,7 @@ import helpers from '../helpers'
 
 class Navbar extends Component {
   render() {
-    const { itemsInCart, totalOfCart } = this.props
+    const { itemQuantity, subtotal } = this.props
     return (
       <Menu inverted id="navbar">
         <Link to="/">
@@ -19,8 +19,8 @@ class Navbar extends Component {
         </Link>
         <Menu.Menu position="right">
           <Menu.Item>
-            {itemsInCart > 0
-              ? `${itemsInCart} items in cart. Current total: $${totalOfCart}`
+            {itemQuantity > 0
+              ? `${itemQuantity} items in cart. Current total: $${subtotal}`
               : 'Start shopping!'}
           </Menu.Item>
           <Link to="/cart">
@@ -40,20 +40,20 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  totalOfCart: PropTypes.number,
-  itemsInCart: PropTypes.number,
+  subtotal: PropTypes.number,
+  itemQuantity: PropTypes.number,
 }
 
 const mapStateToProps = (state) => {
-  let totalOfCart = 0
+  let subtotal = 0
   const { cart } = state.user
-  const itemsInCart = Object.keys(cart).length
+  const itemQuantity = Object.keys(cart).length
 
-  if (itemsInCart) {
-    totalOfCart = helpers.calculateTotal(cart)
+  if (itemQuantity) {
+    subtotal = helpers.calculateTotal(cart)
   }
 
-  return { itemsInCart, totalOfCart }
+  return { itemQuantity, subtotal }
 }
 
 export default connect(mapStateToProps)(Navbar)
