@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Icon, Button } from 'semantic-ui-react'
+import { Table, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 
 const TableRow = ({

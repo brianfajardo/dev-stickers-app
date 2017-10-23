@@ -8,10 +8,14 @@ import * as actions from '../actions'
 import helpers from '../helpers'
 import Header from '../components/Header'
 import TableRow from '../components/TableRow'
+import CheckoutPayment from '../components/CheckoutPayment'
 
 class Cart extends Component {
   constructor(props) {
     super(props)
+
+    this.state = { checkout: true }
+
     this.increaseQuantity = this.increaseQuantity.bind(this)
     this.decreaseQuantity = this.decreaseQuantity.bind(this)
   }
@@ -90,7 +94,7 @@ class Cart extends Component {
               <Link to="/collection">
                 <Button color="red">Back</Button>
               </Link>
-              <Button color="green">Checkout</Button>
+              {!isCartEmpty && this.state.checkout && <CheckoutPayment total={grandTotal} />}
             </div>
           </div>
         )}
