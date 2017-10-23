@@ -7,8 +7,18 @@ import Header from '../components/Header'
 import ProductCard from '../components/ProductCard'
 
 class Collection extends Component {
+  constructor(props) {
+    super(props)
+    this.onAddToCart = this.onAddToCart.bind(this)
+  }
+
   componentDidMount() {
     this.props.fetchInventory()
+  }
+
+  onAddToCart(item) {
+    console.log('item to add to cart:', item)
+    // this.props.addToCart()
   }
 
   render() {
@@ -16,7 +26,9 @@ class Collection extends Component {
       <div id="collection">
         <Header emoji="🎉" emojiAriaLabel="confetti" text="The Collection" />
         <div>
-          {this.props.inventory.map((item, index) => <ProductCard item={item} key={index} />)}
+          {this.props.inventory.map((item, index) => (
+            <ProductCard item={item} key={index} onAddToCart={this.onAddToCart} />
+          ))}
         </div>
         <p>
           Images provided by{' '}

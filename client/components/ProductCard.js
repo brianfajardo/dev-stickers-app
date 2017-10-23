@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
 
-const ProductCard = ({ item }) => (
-  <Card id="product-card" centered raised>
+import PopupTextBubble from './PopupTextBubble'
+
+const ProductCard = ({ item, onAddToCart }) => (
+  <Card id="product-card" raised>
     <Image src={item.image.url} alt={item.image.alt} centered />
     <Card.Content>
       <Card.Header>
@@ -25,12 +27,17 @@ const ProductCard = ({ item }) => (
     {item.stock === 0 ? (
       <Button disabled>Check back soon!</Button>
     ) : (
-      <Button animated="fade" color="green">
-        <Button.Content visible>
-          <Icon name="cart" />
-        </Button.Content>
-        <Button.Content hidden>Add to cart</Button.Content>
-      </Button>
+      <PopupTextBubble
+        content="🌸 Added to cart 🌸"
+        trigger={
+          <Button animated="fade" color="green" onClick={() => onAddToCart(item)}>
+            <Button.Content visible>
+              <Icon name="cart" />
+            </Button.Content>
+            <Button.Content hidden>Add to cart</Button.Content>
+          </Button>
+        }
+      />
     )}
   </Card>
 )
@@ -47,6 +54,7 @@ ProductCard.propTypes = {
       alt: PropTypes.string,
     }),
   }),
+  onAddToCart: PropTypes.func,
 }
 
 export default ProductCard
