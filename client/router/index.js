@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 
 import Navbar from '../containers/Navbar'
@@ -7,8 +7,11 @@ import Landing from '../components/Landing'
 import Collection from '../containers/Collection'
 import Cart from '../containers/Cart'
 
+// Note: We use HashRouter vs BrowserRouter if we don't have a server
+// set up to run absolute paths.
+
 const Router = () => (
-  <BrowserRouter>
+  <HashRouter>
     <div>
       <Route path="/" component={Navbar} />
       <Container>
@@ -17,7 +20,7 @@ const Router = () => (
         <Route exact path="/cart" component={Cart} />
       </Container>
     </div>
-  </BrowserRouter>
+  </HashRouter>
 )
 
 export default Router
